@@ -1,0 +1,42 @@
+devlop_env:
+  stage: PORD
+  
+  oracle_tns:
+  tns_oracle: jdbc:oracle:thin(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(ADDRESS=(PROTOCOL=TCP)(HOST=[IP])(PORT=[Port No]))(FAILOVER=ON)(LOAD_BALANCE=OFF))(CONNECT_DATA=(SERVICE_NAME=[Service Name])(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC))))
+
+jdbc_url:
+  jdbc_db: jdbc:postgresql://[IP]/xxxx_main
+  
+credentials:
+  ora01.username: xxxxx
+  ora01.psssword: xxxxx
+  ora02.username: xxxxx
+  ora02.psssword: xxxxx
+  
+topic-prefixes:
+  topic-prefix-xxx01: DEV.CONNECT.XXXDBS_01
+  topic-prefix-xxx02: DEV.CONNECT.XXXDBS_02
+  topic-prefix-xxx03: DEV.CONNECT.XXXDBS_03
+  topic-prefix-oggbd_xxxdb: DEV.CONNECT.XXXDBS
+  
+ip_addresses:
+  bootstrap-servers: xxx.xxx.xxx.xxx:6667,xxx.xxx.xxx.xxx:6667,xxx.xxx.xxx.xxx:6667
+  redis-host: xxx.xxx.xxx.xxx
+  redis-port: 6379
+  
+spark-config:
+  spark-driver-cores: 2
+  spark-driver-memory: 2g
+  spark-executor-cores: 3
+  spark-executor-memory: 2g
+  spark-executor-instances: 2
+  spark-sql-shuffle-partitions: 6
+  spark-network-timeout: 60s
+  
+spark_log:
+  spark_log_dbhost: xxx.xxx.xxx.xxx
+  spark_log_dbport: xxxx
+  spark_log_dbname: xxxx
+  spark_log_dbuser: xxxx
+  spark_log_dbpasswd: xxxx
+  
