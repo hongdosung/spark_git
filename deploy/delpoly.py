@@ -63,5 +63,5 @@ try:
 except:
     traceback_msg = traceback.format_exc()
     print(traceback_msg)
-#eles:
-#    print('deploy 완료')
+eles:
+    print('deploy 완료')
