@@ -56,10 +56,10 @@ class ApplicationConfig:
         
         return contents
     
-        
-application_config = ApplicationConfig()
+
+applicat ion_config = ApplicationConfig()
 try:
-    application_config.apply_config()
+    appl ication_config.apply_config()
 except:
     traceback_msg = traceback.format_exc()
     print(traceback_msg)

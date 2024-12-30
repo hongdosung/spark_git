@@ -116,7 +116,7 @@ class ACT_TBL_FROM_REDIS(DBSyncBaseClass):
         return_dict = {}
         pk_lst = key[len(tmp_key_ptn):].split(':')
         for i in range(len(pk_lst)):
-            return_dict.update({f'PK{i}' : pk_lst[i] })
+            return_dict.update({f'PK{i}' : pk_lst[i]})
         
         result_dict = self.redis.redis_client.hgetall(key)
         result_dict = {k: v for k, v in result_dict.items()}

@@ -1,3 +1,7 @@
 # Default ignored files
 test.json
 tasks.json
+*.txt
+*.html
+*.config
+*.pyc

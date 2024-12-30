@@ -9,7 +9,7 @@ class DBSyncBaseClass(BaseSparkClass):
         self.redis = self.get_redis_client(cluster=self.get_redis_client_in)
     
     
-    def foreach_bach_process(self. df, epoch_id, tbl_nm, pk_col_lst, value_col_lst, spark):
+    def foreach_bach_process(self, df, epoch_id, tbl_nm, pk_col_lst, value_col_lst, spark):
         self.write_log('INFO', 'foreach_bach_process 시작', epoch_id)
         df = self.null_transformer.convert_value_null_to_op_type(df)
         df.persist()
@@ -137,11 +137,11 @@ class DBSyncBaseClass(BaseSparkClass):
                     
                     new_value = dict(org_value, **json_value_payload)
                     self.redis.send_hget_by_chg_key(
-                            json_payload    = new_value,
-                            tbl_nm          = tbl_nm,
-                            pseudo_key_lst  = pseudo_key,
-                            org_key_lst     = org_key_lst,
-                            value_col_lst   = value_col_lst
+                         json_payload    = new_value,
+                         tbl_nm          = tbl_nm,
+                         pseudo_key_lst  = pseudo_key,
+                         org_key_lst     = org_key_lst,
+                         value_col_lst   = value_col_lst
                     )
                     updt_cnt += 1
                 elif op_type == 'D':
@@ -192,4 +192,3 @@ class DBSyncBaseClass(BaseSparkClass):
         self.foreach_bach_process(df, epoch_id, tbl_nm, org_key_lst, normal_col_lst, spark)
         self.write_log(f'Insert: {insrt_cnt} 건, Update: {updt_cnt}건, Delete: {del_cnt}건')
         self.write_log('INFO', 'foreach_bach_process 종료', epoch_id)
-    
